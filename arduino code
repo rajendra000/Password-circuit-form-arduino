@@ -1,0 +1,82 @@
+/*
+ * if Password = 4321 then led ON
+ * else led remain OFF
+*/
+
+int i=0;
+int a[4] = {4,3,2,1}; /*My password*/
+int b[4]; /*Array for comparaison*/
+int bs1, bs2, bs3, bs4; /*The buttons*/
+int d=250;
+
+void setup()
+{
+  pinMode(1, INPUT);
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+
+  pinMode(5, OUTPUT);
+}
+
+void loop()
+{
+  bs1 = digitalRead(1);
+  bs2 = digitalRead(2);
+  bs3 = digitalRead(3);
+  bs4 = digitalRead(4);
+
+/*
+ * Storing the inputs in array b 
+ * for comparaison with a
+*/
+  if(bs4 == 0)
+  {
+    b[i++] = 4; 
+    delay(d); 
+  }
+
+  if(bs3 == 0)
+  {
+    b[i++] = 3;
+    delay(d); 
+  }
+
+  if(bs2 == 0)
+  {
+    b[i++] = 2;
+    delay(d); 
+  }
+
+  if(bs1 == 0)
+  {
+    b[i++] = 1;
+    delay(d); 
+  }
+
+/*
+ * Comparing with array a
+*/
+
+
+  if(a[0] == b[0])
+  {
+    if(a[1] == b[1])
+    {
+      if(a[2] == b[2])
+      {
+        if(a[3] == b[3])
+        {
+          
+          digitalWrite(5,1);
+        }
+      }
+    }
+  }
+
+  else
+  {
+          
+          digitalWrite(5,0);
+  }
+}
